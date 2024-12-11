@@ -52,9 +52,10 @@ void ACOABaseCharacter::Tick(float DeltaTime)
 		return;
 	}
 
-	if (Stamina < MaxStamina) {
+	if (Stamina < MaxStamina && bStaminaDrained)
+	{
 		Stamina += StaminaGainRate * DeltaTime;
-		if (Stamina > MaxStamina) {
+		if (Stamina >= MaxStamina) {
 			Stamina = MaxStamina;
 			bStaminaDrained = false;
 		}
